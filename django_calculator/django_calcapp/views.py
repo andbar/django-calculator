@@ -7,14 +7,21 @@ def check_input(symbol, num_one, num_two):
     else:
         try:
             result = do_math(symbol, num_one, num_two)
-            context = {"message": "{} {} {} = {}".format(num_one, symbol, num_two, result)}
+            context = {"message": "{} {} {} = {}".format(num_one, symbol, num_two, result), "result": str(result)}
         except:
             context = {"message": "That's not a number! Try again."}
     return context
 
 
 def do_math(symbol, num_one, num_two):
-    return eval("{}{}{}".format(num_one, symbol, num_two))
+    if symbol == "+":
+        return float(num_one) + float(num_two)
+    elif symbol == "-":
+        return float(num_one) - float(num_two)
+    elif symbol == "*":
+        return float(num_one) * float(num_two)
+    elif symbol == "/":
+        return float(num_one) / float(num_two)
 
 
 def index_view(request):
@@ -26,5 +33,3 @@ def index_view(request):
     else:
         context = {}
     return render_to_response(template_name='calculator.html', context=context)
-
-
