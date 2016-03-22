@@ -63,3 +63,6 @@ data/
 *.sqlite
 *.sqlite3
 .direnv/
+.envrc
+.idea
+django_calculator/.idea
